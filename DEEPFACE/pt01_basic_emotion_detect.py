@@ -18,10 +18,18 @@ def emotion_detect(emotion_queue):
 
     try:
         while True:
+
             ret, frame = cap.read()
             if not ret:
                 print("Error: Can't receive frame. Exiting ...")
                 break
+
+            face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+            # gray = cv2.cvtColor(face_cascade, cv2.COLOR_BGR2GRAY)
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+            for (x, y, w, h) in faces:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
             h, w, c = frame.shape
 

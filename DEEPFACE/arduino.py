@@ -5,7 +5,7 @@ import threading
 from time import sleep
 import pt01_basic_emotion_detect
 
-COM_PORT = 'COM3'  
+COM_PORT = 'COM9'
 BAUD_RATES = 9600
 ser = serial.Serial(COM_PORT, BAUD_RATES)
 
